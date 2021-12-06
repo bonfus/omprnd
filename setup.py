@@ -1,13 +1,16 @@
 from setuptools import setup
 import os
 
+import os
+setup_path=os.path.dirname(os.path.realpath(__file__))
+
 from pybind11.setup_helpers import build_ext, Pybind11Extension
 ext_modules = [
     Pybind11Extension(
         "omprnd",
         ["omprnd.cpp"],
-        extra_compile_args='-fopenmp -DTINA -I./tina/include/'.split(),
-        extra_link_args='-fopenmp -DTINA -L./tina/lib/ -Wl,-Bstatic -ltrng4 -Wl,-Bdynamic '.split(),
+        extra_compile_args=('-fopenmp -DTINA -I'+os.path.join(setup_path,'tina','include')).split(),
+        extra_link_args=('-fopenmp -DTINA -L' + os.path.join(setup_path,'tina','lib') + ' -Wl,-Bstatic -ltrng4 -Wl,-Bdynamic ').split(),
 
     ),
 ]
