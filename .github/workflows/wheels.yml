@@ -15,7 +15,10 @@ jobs:
       - name: Build wheels
         uses: pypa/cibuildwheel@v2.3.0
         env:
-          CIBW_BEFORE_BUILD_LINUX: pip install cmake pybind11 wget && bash ./build_tina.sh && rm ./tina/lib/*.so
+          CIBW_BEFORE_ALL: >
+            yum install cmake wget -y &&
+            bash ./build_tina.sh
+          CIBW_BEFORE_BUILD_LINUX: pip install pybind11 && rm ./tina/lib/*.so
 
       - uses: actions/upload-artifact@v2
         with:
