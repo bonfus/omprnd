@@ -12,12 +12,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Build Tina
-        run: ./build_tina.sh && rm ./tina/lib/*.so
-        shell: bash
-
       - name: Build wheels
         uses: pypa/cibuildwheel@v2.3.0
+        env:
+          CIBW_BEFORE_BUILD_LINUX: ./build_tina.sh && rm ./tina/lib/*.so
+          CIBW_BEFORE_BUILD: pip install pybind11
 
       - uses: actions/upload-artifact@v2
         with:
