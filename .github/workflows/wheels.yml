@@ -16,7 +16,9 @@ jobs:
         uses: pypa/cibuildwheel@v2.3.0
         env:
           CIBW_BEFORE_ALL: >
-            ( yum install cmake wget -y || apt-get -y cmake wget ) &&
+            ( yum install cmake wget -y || true ) &&
+            ( apt-get -y cmake wget || true ) &&
+            ( apk add cmake wget || true ) &&
             bash ./build_tina.sh
           CIBW_BEFORE_BUILD_LINUX: pip install pybind11 && pwd && ls
 
