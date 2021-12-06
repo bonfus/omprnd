@@ -15,7 +15,7 @@ jobs:
       - name: Build wheels
         uses: pypa/cibuildwheel@v2.3.0
         env:
-          CIBW_BEFORE_BUILD_LINUX: bash ls
+          CIBW_BEFORE_BUILD_LINUX: bash -c ls
           CIBW_BEFORE_BUILD: pip install pybind11
 
       - uses: actions/upload-artifact@v2
