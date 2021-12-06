@@ -10,3 +10,6 @@ cd trng4-$VER
 mkdir -p build && cd build
 cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$SCRIPT_PATH/tina  CXXFLAGS='-fPIC' ..
 make && make install
+cd ../..
+rm -r trng4-$VER
+

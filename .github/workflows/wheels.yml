@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build Tina
-        run: ./build_tina.sh
+        run: ./build_tina.sh && rm ./tina/*.so
         shell: bash
 
       - name: Build wheels
