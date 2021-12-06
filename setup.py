@@ -10,7 +10,7 @@ ext_modules = [
         "omprnd",
         ["omprnd.cpp"],
         extra_compile_args=('-fopenmp -DTINA -I'+os.path.join(setup_path,'tina','include')).split(),
-        extra_link_args=('-fopenmp -DTINA -L' + os.path.join(setup_path,'tina','lib') + ' -Wl,-Bstatic -ltrng4 -Wl,-Bdynamic ').split(),
+        extra_link_args=('-fopenmp -DTINA -L' + os.path.join(setup_path,'tina','lib') + ' -L' + os.path.join(setup_path,'tina','lib64') + ' -Wl,-Bstatic -ltrng4 -Wl,-Bdynamic ').split(),
 
     ),
 ]
