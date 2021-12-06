@@ -18,7 +18,7 @@ jobs:
           CIBW_BEFORE_ALL: >
             yum install cmake wget -y &&
             bash ./build_tina.sh
-          CIBW_BEFORE_BUILD_LINUX: pip install pybind11 && pwd
+          CIBW_BEFORE_BUILD_LINUX: pip install pybind11 && pwd && ls
 
       - uses: actions/upload-artifact@v2
         with:
