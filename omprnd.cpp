@@ -36,9 +36,9 @@ void *handle = dlopen("libmkl_core.so", RTLD_LAZY | RTLD_GLOBAL); void *handle1 
     mkl_set_num_threads_local( omp_get_max_threads() );
     vslNewStream(&stream,VSL_BRNG_MT19937,seed);
     if (typeid(T) == typeid(double)) {
-        vdRngUniform(VSL_RNG_METHOD_UNIFORM_STD,stream,N, out, 0.0d,1.0d);
+        vdRngUniform(VSL_RNG_METHOD_UNIFORM_STD,stream,N, ((double*) &out[0]), 0.0d,1.0d);
     } else {
-        vfRngUniform(VSL_RNG_METHOD_UNIFORM_STD,stream,N, out, 0.0d,1.0d);
+        vsRngUniform(VSL_RNG_METHOD_UNIFORM_STD,stream,N, ((float*) &out[0]), 0.0d,1.0d);
     }
     
 
